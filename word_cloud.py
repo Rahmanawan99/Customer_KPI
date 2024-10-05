@@ -8,8 +8,6 @@ import matplotlib.pyplot as plt
 file_path = 'FTDH User list 2024-09-27.xlsx'
 df = pd.read_excel(file_path)
 
-# Extract words from full_name
-
 # Join all the name/addess or any data into a single string
 text = ' '.join(df['IRIS Address'].dropna().astype(str))
 
