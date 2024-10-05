@@ -2,28 +2,21 @@ import pandas as pd
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
-# Load the Excel file
+#Word CLoud, can be applied to any non-numeric column
+
+# Load the file
 file_path = 'FTDH User list 2024-09-27.xlsx'
 df = pd.read_excel(file_path)
 
-# ----------------------- #
-# Step 1: Extract words from full_name
-# ----------------------- #
+# Extract words from full_name
 
-# Join all full names into a single string
+# Join all the name/addess or any data into a single string
 text = ' '.join(df['IRIS Address'].dropna().astype(str))
 
-# ----------------------- #
-# Step 2: Generate the Word Cloud
-# ----------------------- #
-
-# Generate the word cloud
+# Generate the Word Cloud
 wordcloud = WordCloud(width=800, height=400, background_color='white', colormap='viridis').generate(text)
 
-# ----------------------- #
-# Step 3: Visualize the Word Cloud
-# ----------------------- #
-
+# Visualize the Word Cloud
 # Plot the word cloud
 plt.figure(figsize=(10, 6))
 plt.imshow(wordcloud, interpolation='bilinear')

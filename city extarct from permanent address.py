@@ -3,10 +3,7 @@ import pandas as pd
 # Load the Excel file
 file_path = 'FTDH User list 2024-09-27.xlsx'
 df = pd.read_excel(file_path)
-
-# ----------------------- #
-# Step 1: Extract the last 3 words from the 'IRIS Address' column
-# ----------------------- #
+#In my file, the last 4-5 words in permanent address are the city names so this code extracts last 4-5 words from permanent address.
 
 # Define a function to extract the last 3 words
 def extract_city_name(address):
@@ -20,12 +17,10 @@ def extract_city_name(address):
     else:
         return None  # Return None if there are less than 3 words
 
-# Apply the function to the 'IRIS Address' column and create a new column 'City Name'
+# Apply the function to the 'Address' column and create a new column 'City Name'
 df['City Name'] = df['IRIS Address'].apply(extract_city_name)
 
-# ----------------------- #
-# Step 2: Save only the 'City Name' column to a new CSV file
-# ----------------------- #
+# Save only the 'City Name' column to a new CSV file
 
 # Create a DataFrame with just the 'City Name' column
 city_names_df = df[['City Name']]

@@ -4,14 +4,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import norm
 
-# Load the Excel file
+#Normal distribution/Bell chart for numeric data
+
+# Load the file
 file_path = 'FTDH User Data.xlsx'
 df = pd.read_excel(file_path)
 
-# Convert 'Days till FTDH' to numeric if not already
+# Convert to numeric if not already
 df['device_count'] = pd.to_numeric(df['device_count'], errors='coerce')
 
-# Drop NaN values from 'Days till FTDH'
+# Drop NaN values 
 days_ftdh = df['device_count'].dropna()
 
 # Calculate statistics
@@ -42,7 +44,7 @@ plt.xlabel('Device count', fontsize=12)
 plt.ylabel('Density', fontsize=12)
 plt.legend()
 
-# Display stats on the plot
+# Display stats on the plot, this can vary based on the plot size, so change accordingly.
 plt.text(xmax*0.6, max(p)*0.8, f'Mean: {mean:.2f}\nStd Dev: {std_dev:.2f}\nMax Age: {max_age:.2f}\nMin Age: {min_age:.2f}', 
          fontsize=12, bbox=dict(facecolor='white', alpha=0.5))
 

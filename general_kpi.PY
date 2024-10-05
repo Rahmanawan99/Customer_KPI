@@ -28,16 +28,15 @@ KPIs and insights
 total_users = df['user_id'].nunique()
 print(f"\nTotal unique users: {total_users}")
 
-# 2. Status reason distribution (to see common deactivation reasons)
+# 2. Status reason distribution (to see common deactivation reasons) However all users in my DB are blocked due to a single reason
 status_reason_counts = df['Status reason'].value_counts()
 print(f"\nStatus reason distribution:\n{status_reason_counts}")
 
-# 3. Average time till FTDH (Fraud Trigger Detection Horizon)
+# 3. Average time till FTDH (FTDH = InterBank Dispute)
 avg_days_till_ftdh = df['Days till FTDH'].describe()
 print(f"\nAverage days till FTDH: {avg_days_till_ftdh}")
 
-# 4. Newly onboarded vs non-new users
-# Count newly onboarded vs old users
+# 4. Newly onboarded vs non-new users (Newly onboarded varies depending on dates in momst cases its 30 days within onboarding)
 newly_onboarded_count = df['Newly Onboarded'].value_counts().get('New', 0)
 old_users_count = df['Newly Onboarded'].value_counts().get('Old', 0)
 
@@ -53,11 +52,11 @@ print(f"\nDevice count stats:\n{device_count_stats}")
 age_distribution = df['Age'].describe()
 print(f"\nAge distribution:\n{age_distribution}")
 
-# 7. Check for users with multiple email addresses (potential fraud flag)
+# 7. Check for users with multiple email addresses This does not include similarity index
 multiple_email_users = df[df['has_email'] == 1]['email'].value_counts().loc[lambda x: x > 1]
 print(f"\nUsers with multiple email addresses:\n{multiple_email_users}")
 
-# 8. Average closing balance (could be useful for financial insights)
+# 8. Average closing balance
 avg_closing_balance = df['avg_closing_balance'].mean()
 print(f"\nAverage closing balance: {avg_closing_balance:.2f}")
 

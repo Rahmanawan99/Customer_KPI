@@ -6,11 +6,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import norm
 
-# Load the Excel file
+#IN THIS CODE AGAIN YOU CAN MAKE A COLUMN/BAR CHART FOR ANY FIELD, HERE I DID device_count
+
+# Load the file
 file_path = 'FTDH User Data.xlsx'
 df = pd.read_excel(file_path)
 
-# Convert 'device_count' to numeric if not already
+# Convert 'device_count' to numeric
 df['device_count'] = pd.to_numeric(df['device_count'], errors='coerce')
 
 # Drop NaN values from 'device_count'
